@@ -36,9 +36,13 @@ namespace Supermarket.API
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
 
-            services.AddDbContext<AppDbContext>(options => {
-                options.UseInMemoryDatabase("supermarket-api-in-memory");
-            });
+            //services.AddDbContext<AppDbContext>(options => {
+                //options.UseInMemoryDatabase("supermarket-api-in-memory");
+            //});
+            
+            services.AddDbContext<AppDbContext>(options => 
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultCOnnection"))
+            );
             
             
             
